@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+    <style>
+        .container {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .strike-through {
+            text-decoration: line-through;
+        }
+
+        .capital {
+            text-transform: capitalize;
+        }
+
+        .userCard {
+            background: #1b6d85;
+            margin: 1em;
+            color: white;
+            padding: 2em;
+        }
+        .name {
+            text-align: center;
+        }
+        .divider {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .flower {
+            background: red;
+        }
+        .big {
+            font-size: 3em;
+        }
+        .star {
+          border: 10px solid green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+</div>
+
+<script>
+    let user;
+    const createElement = function (kind, html) {
+        const el = document.createElement(kind);
+        el.innerHTML = html;
+        return el;
+    };
+    const container = document.querySelector('.container');
+    for( let i = 0; i < 10; i++) {
+      const el = createElement('p', i);
+      el.style.backgroundColor = 'blue';
+      el.style.fontSize = '2em';
+      el.style.color = 'white';
+      el.classList.add('strike-through');
+      console.log(el);
+
+      el.addEventListener('mouseenter', function () {
+          if (this.nextSibling) {
+              this.nextSibling.style.fontSize = '3em';
+              this.nextSibling.style.backgroundColor = 'red';
+          }
+      });
+        el.addEventListener('mouseleave', function () {
+            if (this.nextSibling) {
+                this.nextSibling.style.fontSize = '2em';
+                this.nextSibling.style.backgroundColor = 'blue';
+            }
+        });
+
+        el.addEventListener('click', function () {
+           if ( el.previousElementSibling ) {
+               el.parentNode.insertBefore(el, el.previousSibling);
+           }
+        });
+      container.appendChild(el);
+    }
+
+
+    class MyEl {
+        myElFunction() {
+            console.log(this);
+        }
+    }
+    console.log(this);
+    const myEl = new MyEl();
+    myEl.myElFunction();
+
+    const myArray = [
+        {name: 'vinson', git: 'geekwisevinson', email: 'vinsonfernandez@gmail.com', isBig: false},
+        {name: 'Renee', git: 'reneeharder', email: 'reneeharder@gmail.com', isBig: false},
+        {name: 'angelo', git: 'angeloMedrano', email: 'medrano.angelo93@gmail.com', hasStar: true},
+        {name: 'trent', git: 'trentSena', email: 'tsena16@gmail.com', hasFlower: true},
+        {name: 'jacob', git: 'jakeAguilar', email: 'aguilarjacob23@gmail.com'},
+    ];
+
+    const div = document.createElement('div');
+
+
+    function showUsers() {
+        console.log('show users');
+        div.innerHTML = '';
+        myArray.forEach(createUser);
+
+    }
+    function createUser(user) {
+
+        div.classList.add('userCard');
+        document.body.appendChild(div);
+        const h1 = document.createElement('h1');
+        h1.classList.add('name');
+        h1.innerText = user.name;
+        h1.classList.add('capital');
+        div.appendChild(h1);
+        const divider = document.createElement('div');
+        divider.classList.add('divider');
+        div.appendChild(divider);
+        const git = document.createElement('div');
+        const email = document.createElement('div');
+        divider.appendChild(git);
+        divider.appendChild(email);
+        email.innerText = user.email;
+        git.innerText = user.git;
+        if (user.isBig) {
+            h1.classList.add('big');
+        } else {
+            h1.classList.remove('big');
+        }
+        if (user.hasStar) {
+            h1.classList.add('star');
+        } else {
+            h1.classList.remove('star');
+        }
+        if (user.hasFlower) {
+            h1.classList.add('flower');
+        } else {
+            h1.classList.remove('flower');
+        }
+    }
+
+    function animationFrame() {
+        showUsers();
+        window.requestAnimationFrame(animationFrame);
+    }
+    animationFrame();
+
+    setInterval(function () {
+        myArray.sort( function (a, b) {
+            return Math.random() > .5 ? 1 : -1;
+        } )
+    }, 3000);
+
+</script>
+</body>
+</html>
