@@ -13,7 +13,7 @@ const people = [
     ['bernard', 'male', 'man', 'boy', 'hat', 'brown', 'beard'],
     ['bill', 'male', 'man', 'boy', 'red', 'orange', 'ginger', 'bald', 'cheeks'],
     ['charles','male', 'man', 'boy', 'blonde', 'yellow', 'moustache'],
-    ['claire', 'female', 'woman', 'girl', 'hat', 'red', 'orange', 'ginger', 'claire'],
+    ['claire', 'female', 'woman', 'girl', 'hat', 'red', 'orange', 'ginger', 'glasses'],
     ['david', 'male', 'man', 'boy', 'blonde', 'yellow', 'beard'],
     ['eric','male', 'man', 'boy', 'hat', 'blonde', 'yellow'],
     ['frans', 'male', 'man', 'boy', 'red', 'orange', 'ginger'],
