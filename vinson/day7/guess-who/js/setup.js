@@ -93,7 +93,7 @@ function setup(){
         // we check to see if there is a '?' at the end of the sentence
         if (textBox.value && textBox.value.slice(-1) === '?') {
             // if there is we get the value of the textarea minus the '?'
-            const value = textBox.value.slice(0, textBox.value.length -1);
+            const value = textBox.value.slice(0, textBox.value.length -1).toLowerCase();
             // once we have the question we can clear the box
             textBox.value = '';
             // next we split the string sentence with a space so we have each word in an array
