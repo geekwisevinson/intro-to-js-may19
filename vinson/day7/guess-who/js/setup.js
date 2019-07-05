@@ -99,9 +99,9 @@ function setup(){
             // next we split the string sentence with a space so we have each word in an array
             value.split(' ').forEach( word => {
                 // we call forEach on the array
-                if (keywords.includes(word)) {
+                if (keywords.includes(word.toLowerCase())) {
                     // if the keywords array holds any of the words in the sentence that is our trait
-                    trait = word;
+                    trait = word.toLowerCase();
                 }
             });
             // now that we have a trait we check if our suspect has our trait
